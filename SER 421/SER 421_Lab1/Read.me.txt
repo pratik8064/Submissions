@@ -1,0 +1,5 @@
+Submission by : Pratik Suryawanshi
+ASU ID : 1213231238
+
+function postscore is used inside Tournament with parameters (LastName, Initial , Score);
+
