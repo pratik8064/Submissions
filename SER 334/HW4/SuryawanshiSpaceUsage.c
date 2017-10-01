@@ -64,7 +64,7 @@ void sortList(){
    for (i = 1; i < listIndex; i++){
        key = list[i];
        j = i-1;
-       while (j >= 0 && strcmp(list[j].path, key.path) < 0){
+       while (j >= 0 && strcmp(list[j].path, key.path) > 0){
            list[j+1]= list[j];
            j = j-1;
        }
