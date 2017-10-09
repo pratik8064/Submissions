@@ -104,7 +104,7 @@ long int getDetails(DIR * d, char* parent){
 				chdir(tempPath);
 				subDir = opendir(tempPath);				
 				if(subDir == NULL) {
-					printf("failed to open new dir");					
+					printf("failed to open new dir\n");					
 					perror("prsize");
 					exit(1);
 				}else{
