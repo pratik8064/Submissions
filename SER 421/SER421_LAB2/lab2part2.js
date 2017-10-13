@@ -5,7 +5,7 @@ var options = {
     server: 'www.httpbin.org',
     path: '/',
     port: '80',
-    method: 'GET',
+    method: 'POST',
     max_requests: '5',
     local_port: '8080'
 };

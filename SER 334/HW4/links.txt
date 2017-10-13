@@ -1,0 +1,9 @@
+OS hw4
+
+https://stackoverflow.com/questions/1129499/how-to-get-the-size-of-a-dir-programatically-in-linux
+
+https://stackoverflow.com/questions/4989431/how-to-use-s-isreg-and-s-isdir-posix-macros
+
+https://stackoverflow.com/questions/2802188/file-count-in-a-directory-using-c
+
+http://pubs.opengroup.org/onlinepubs/009695399/functions/getcwd.html
