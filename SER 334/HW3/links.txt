@@ -1,0 +1,10 @@
+https://stackoverflow.com/questions/18408766/make-a-system-call-to-get-list-of-processes
+
+http://www.informit.com/articles/article.aspx?p=368650
+
+http://tuxthink.blogspot.com/2011/03/listforeach-and-listentry.html
+
+http://tuxthink.blogspot.com/2011/03/listforeach-and-listentry.html
+
+
+apt-get install build-essential linux-headers-$(uname -r)
