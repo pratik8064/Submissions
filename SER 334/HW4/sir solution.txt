@@ -1,0 +1,110 @@
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <stdio.h>
+#include <dirent.h>
+
+#define MAXIMUM_FILES           256
+#define MAXIMUM_FILENAME_LENGTH 256
+#define MAXIMUM_SUBPATH_LENGTH 1024
+
+void get_ordered_files_wd(char names[][MAXIMUM_FILENAME_LENGTH], int* count) {
+    
+    DIR* dir_stream = opendir(".");
+    
+    struct dirent *entry_iter = readdir(dir_stream);
+    
+    *count = 0;
+
+    while(entry_iter != NULL) {
+        char filename[256];
+        strcpy(filename, entry_iter->d_name);
+                
+        if(strcmp(filename, ".") != 0 && strcmp(filename, "..") != 0) {
+            strcpy(names[*count], filename);
+            
+            (*count)++;
+        }
+             
+        entry_iter = readdir(dir_stream);
+    }
+    
+    char temp[256];
+    for(int i = 0; i < *count; i++) {
+        int least = i;
+
+        for(int j = i; j < *count; j++) {
+            if(strcasecmp(names[j], names[least]) < 0)
+                least = j;
+        }
+
+        //swap the positions with temporary memory
+        strcpy(temp, names[i]);
+        strcpy(names[i], names[least]);
+        strcpy(names[least], temp);
+    }
+}
+
+void friendly_byte_display(int bytes) {
+    if(bytes < 1024)
+        printf("%dB", bytes);
+    else if (bytes < 1024 * 1024)
+        printf("%dK", bytes / 1024);
+    else if (bytes < 1024 * 1024 * 1024)
+        printf("%dMB", bytes / (1024 * 1024));
+}
+
+int get_size(char dirname[]) {
+    //printf("debug: running get_size on %s.\n", dirname);
+    
+    int totalSize = 0, i;
+    struct stat element_stat;
+    //todo: change directory
+
+    int count;
+    char filenames[MAXIMUM_FILES][MAXIMUM_FILENAME_LENGTH];
+    
+    get_ordered_files_wd(&filenames,&count); 
+    
+    for(i = 0; i < count; i++) {
+        stat(filenames[i], &element_stat);
+
+        if(S_ISDIR(element_stat.st_mode)) {
+            char subpath[1024] = "";
+            strcat(subpath, dirname);
+            strcat(subpath, "/");
+            strcat(subpath, filenames[i]);
+            
+            int size = element_stat.st_size;
+            
+            chdir(filenames[i]);
+            size += get_size(subpath);
+            chdir("..");
+       
+            friendly_byte_display(size);
+            printf("\t%s/%s\n", dirname, filenames[i]);
+            
+            totalSize += size;
+        }
+        else if(S_ISREG(element_stat.st_mode)) {
+            friendly_byte_display(element_stat.st_size);
+            totalSize += element_stat.st_size;
+            
+            printf("\t%s/%s\n", dirname, filenames[i]);
+        }
+        else
+            printf("Unknown type of file encountered.");       
+    }
+    
+    return totalSize;
+}
+
+int main(int argc, char** argv) {
+
+    char* root = ".";
+    
+    int totalSize = get_size(root);
+    friendly_byte_display(totalSize);
+    printf("\t.\n");
+    
+    return 0;
+}

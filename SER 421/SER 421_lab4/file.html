@@ -1,0 +1,57 @@
+<html>
+
+<head>
+    <title>Step 1</title>
+</head>
+
+<body>
+    <script src="myJS.js"></script>
+    <p id="topData">
+        Rooms: Kitchen, Study, Living Room, Dining Room, Library<br/>
+        Guests: Mrs. Peacock, Mrs. Green, Miss Scarlet, Colonel Mustard, Professor Plum<br/>
+        Weapons: Pistol, Knife, Wrench, Lead Pipe, Candlestick<br/>
+    </p>
+    <p name="displayName">
+        <FORM id="usernameForm">
+            Name:
+            <input type="text" name="userName" autofocus="true" />
+            <input type="button" value="Enter" onclick="displayPlayer()" />
+        </FORM>
+    </p>
+    <p>
+        <FORM>
+            <label>Guess Room:</label>
+            <select name="rooms">
+                <!--<option value="Kitchen">Kitchen</option>
+                <option value="Study">Study</option>
+                <option value="Living Room">Living Room</option>
+                <option value="Dining Room">Dining Room</option>
+                <option value="Library">Library</option>-->
+            </select>
+            <br/>
+            <label>Guess Suspect:</label>
+            <select name="suspects">
+                <!--<option value="Mrs. Peacock">Mrs. Peacock</option>
+                <option value="Mrs. Green">Mrs. Green</option>
+                <option value="Miss Scarlet">Miss Scarlet</option>
+                <option value="Colonel Mustard">Colonel Mustard</option>
+                <option value="Professor Plum">Professor Plum</option>-->
+            </select>
+            <br/>
+            <label>Guess Weapon:</label>
+            <select name="weapons">
+<!--
+                <option value="Pistol">Pistol</option>
+                <option value="Knife">Knife</option>
+                <option value="Wrench">Wrench</option>
+                <option value="Lead Pipe">Lead Pipe</option>
+                <option value="Candlestick">Candlestick</option>
+-->
+            </select>
+            <br/>
+            <input id="guessButton" type="button" disabled="true" value="Guess" onclick="checkGuess()" />
+        </FORM>
+    </p>
+</body>
+
+</html>
