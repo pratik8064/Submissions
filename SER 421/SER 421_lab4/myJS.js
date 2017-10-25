@@ -5,14 +5,6 @@ var rooms = ["Kitchen", "Study", "Living Room", "Dining Room", "Library"];
 var suspects = ["Mrs. Peacock", "Mrs. Green", "Miss Scarlet", "Colonel Mustard", "Professor Plum"];
 var weapons = ["Pistol", "Knife", "Wrench", "Lead Pipe", "Candlestick"];
 
-
-var tempRooms = JSON.parse(JSON.stringify(rooms));
-var tempSuspects = JSON.parse(JSON.stringify(suspects));
-var tempWeapons = JSON.parse(JSON.stringify(weapons));
-
-var player = {};
-var computer = {};
-
 function getRandom() {
     var randomRoom = tempRooms[Math.floor(Math.random() * tempRooms.length)];
     var randomSuspect = tempSuspects[Math.floor(Math.random() * tempSuspects.length)];
@@ -103,18 +95,21 @@ function fillDropdowns() {
     playerGuessList.rooms = getDropdownList(rooms, player.rooms);
     playerGuessList.suspects = getDropdownList(suspects, player.suspects);
     playerGuessList.weapons = getDropdownList(weapons, player.weapons);
-
+    
+    clearDropdown("rooms");
     var roomGuesslement = document.getElementsByName("rooms")[0];
     for (index in playerGuessList.rooms) {
         roomGuesslement.options[roomGuesslement.options.length] = new Option(playerGuessList.rooms[index], index);
     }
-
+    
+    clearDropdown("suspects");
     var suspectGuessElement = document.getElementsByName("suspects")[0];
     for (index in playerGuessList.suspects) {
         suspectGuessElement.options[suspectGuessElement.options.length] = new Option(playerGuessList.suspects[index], index);
     }
+    
+    clearDropdown("weapons");
     var weaponGuessElement = document.getElementsByName("weapons")[0];
-
     for (index in playerGuessList.weapons) {
         weaponGuessElement.options[weaponGuessElement.options.length] = new Option(playerGuessList.weapons[index], index);
     }
@@ -132,6 +127,7 @@ function displayPlayer() {
     var formElement = document.getElementsByName("usernameForm");
     var nameElement = document.getElementsByName("userName");
     var playerName = nameElement[0].value;
+    player.name = playerName;
     var element = document.getElementById("usernameForm");
     element.parentNode.removeChild(element);
     pElement[0].innerHTML = getPlayerMsg(player, playerName);
@@ -187,55 +183,84 @@ function checkGuess(flag) {
     if (success && !flag) {
         responseMsg = "That was the correct guess! " + selectedSuspect + " did it with the " + selectedWeapon + " in the " + selectedRoom + "!<br>Click to start a new game:  <input type=\"button\" value=\"New Game\" onclick=\"restart()\" />";
     } else if (!success && !flag) {
-        responseMsg = "Sorry that was an incorrect guess! The Computer holds the card for " + wrongGuess + "<br>" + "Click to continue:  <input type=\"button\" value=\"nextTurn\" onclick=\"nextTurn(true)\" />";
+        responseMsg = "Sorry that was an incorrect guess! The Computer holds the card for " + wrongGuess + "<br>" + "Click to continue:  <input type=\"button\" value=\"Continue\" onclick=\"nextTurn(true)\" />";
     } else if (success && flag) {
         responseMsg = "The Computer guessed " + selectedSuspect + " in the " + selectedRoom + " with " + selectedWeapon +
             "<br>That was correct guess. <br>Click to start a new game:  <input type=\"button\" value=\"New Game\" onclick=\"restart()\" />";
     } else {
         "Miss Scarlet in the Library with a Wrench"
-        responseMsg = "The Computer guessed " + selectedSuspect + " in the " + selectedRoom + " with " + selectedWeapon + "<br>The Computer made an incorrect guess! You holds the card for " + wrongGuess + "<br>" + "Click to continue:  <input type=\"button\" value=\"nextTurn\" onclick=\"nextTurn(false)\" />";
+        responseMsg = "The Computer guessed " + selectedSuspect + " in the " + selectedRoom + " with " + selectedWeapon + "<br>The Computer made an incorrect guess! You holds the card for " + wrongGuess + "<br>" + "Click to continue:  <input type=\"button\" value=\"Continue\" onclick=\"nextTurn(false)\" />";
+    }
+    
+    var guessButtonElement = document.getElementById("guessButton");    
+    if(flag){
+        guessButtonElement.removeAttribute('disabled');
+    }else{
+        guessButtonElement.setAttribute("disabled","true");
+                
     }
     p.innerHTML = responseMsg;
+    p.setAttribute("id","lastPTag");
+    var element = document.getElementById("lastPTag");
+    if(element !== null)
+        element.parentNode.removeChild(element);
     document.body.appendChild(p);
 }
 
 function nextTurn(flag) {
     if (flag) {
-        console.log("Its turn for computer");
+        //console.log("Its turn for computer");
         checkGuess(true);
     } else {
-        console.log("Its turn for player");
+        //console.log("Its turn for player");
         checkGuess(false);
     }
 }
 
-function restart() {
-    console.log("lets start new game");
-}
-
-/*
-Sorry that was an incorrect guess! The Computer holds the card for Mrs. Peacock.
-Click to continue:  [Continue]
-
-
-The Computer guessed "Miss Scarlet in the Library with a Wrench"
-The Computer made an incorrect guess! You holds the card for Library.
-Click to continue:  [Continue]
-
-That was the correct guess! Mrs. Green did it with the Candlestick in the Dining Room!
-Click to start a new game:  [New Game]
-*/
 function showHistory() {
 
 }
+
+function clearDropdown(name){
+    var select = document.getElementsByName(name)[0];
+    var length = select.options.length;
+    for (i = 0; i < length; i++) {
+        select.options[i] = null;
+    }
+
+}
+
+function restart(){
+    // add new name tag........
+    var element = document.getElementById("lastPTag");
+    if(element !== null)
+        element.parentNode.removeChild(element);
+    
+    tempRooms = JSON.parse(JSON.stringify(rooms));
+    tempSuspects = JSON.parse(JSON.stringify(suspects));
+    tempWeapons = JSON.parse(JSON.stringify(weapons));
+    var playerName = player.name;
+    player = {};
+    computer = {};
+    secret = getRandom();
+    removeTriplet(secret);
+    playerGuessList = {};
+    computerGuessList = {};
+    assignPlayerCards();
+    fillDropdowns();
+    var pElement = document.getElementsByName("displayName");
+    pElement[0].innerHTML = getPlayerMsg(player, playerName);
+    
+}
+
+var tempRooms = JSON.parse(JSON.stringify(rooms));
+var tempSuspects = JSON.parse(JSON.stringify(suspects));
+var tempWeapons = JSON.parse(JSON.stringify(weapons));
+
+var player = {};
+var computer = {};
 
 var secret = getRandom();
 removeTriplet(secret);
 var playerGuessList = {};
 var computerGuessList = {};
-
-/*var secret = {
-    room : "Living Room",
-    suspect : "Professor Plum",
-    weapon : "Pistol"
-}*/
