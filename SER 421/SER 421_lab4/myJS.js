@@ -1,8 +1,13 @@
 console.log("-----------start-------------");
 
+/*
 var rooms = ["Winterfell", "Kings Landing", "DragonStone", "Vale", "The Wall", "Storms End", "Dorn"];
 var suspects = ["John Snow", "Ned Stark", "Daenerys", "Sam", "Arya", "NightKing", "Jaime Lanister"];
 var weapons = ["Drogon", "Ice", "Oathkeeper", "Heartsbane", "Needle", "Dawn", "LongClow"];
+*/
+var rooms = ["Winterfell", "Kings Landing", "DragonStone"];
+var suspects = ["John Snow", "Ned Stark", "Daenerys"];
+var weapons = ["Drogon", "Ice", "Oathkeeper"];
 
 //---------------------------------------------------------------------------------------------------------------------
 
@@ -199,10 +204,6 @@ function displayPlayer() {
     console.log(secret);
 }
 
-function showTopData() {
-    
-}
-
 function checkGuess(flag) {
     if (flag) {
         var compGuess = getRandomCompGuess();
@@ -251,23 +252,24 @@ function checkGuess(flag) {
         });
     } else if (success && flag) {
         responseMsg = "The Computer guessed " + selectedSuspect + " in the " + selectedRoom + " with " + selectedWeapon +
-            "<br>That was correct guess. <br>Click to start a new game:  <input type=\"button\" value=\"New Game\" onclick=\"restart()\" />";
+            "<br>That was correct guess. <br>Click to start a new game:  ";
+        continueButton.value="New Game";
+        continueButton.addEventListener("click", restart);
     } else {
-        responseMsg = "The Computer guessed " + selectedSuspect + " in the " + selectedRoom + " with " + selectedWeapon + "<br>The Computer made an incorrect guess! You holds the card for " + wrongGuess + "<br>" + "Click to continue:  <input type=\"button\" value=\"Continue\" onclick=\"enableGuess()\" />";
+        responseMsg = "The Computer guessed " + selectedSuspect + " in the " + selectedRoom + " with " + selectedWeapon + "<br>The Computer made an incorrect guess! You holds the card for " + wrongGuess + "<br>" + "Click to continue: " 
+        disableGuess();
+        continueButton.value="Continue";
+        continueButton.addEventListener("click", enableGuess);
     }
 
     p.innerHTML = responseMsg;
     p.setAttribute("id", "lastPTag");
     var element = document.getElementById("lastPTag");
     if (element !== null){
-        /*while (node.hasChildNodes()) {
-            node.removeChild(node.lastChild);
-        }*/
         element.parentNode.removeChild(element);
     }
-        
+    p.appendChild(continueButton);    
     document.body.appendChild(p);
-    p.appendChild(continueButton);
 }
 
 function showHistory() {
@@ -341,3 +343,6 @@ removeTriplet(secret);
 var playerGuessList = {};
 var computerGuessList = {};
 var randomArray = [];
+var pHistory=[];
+var cHistory=[];
+var history = [];
