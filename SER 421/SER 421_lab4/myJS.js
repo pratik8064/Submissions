@@ -173,7 +173,6 @@ function fillDropdowns() {
     for (index in playerGuessList.suspects) {
         suspectGuessElement.options[suspectGuessElement.options.length] = new Option(playerGuessList.suspects[index], index);
     }
-
     clearDropdown("weapons");
     var weaponGuessElement = document.getElementsByName("weapons")[0];
     for (index in playerGuessList.weapons) {
@@ -215,6 +214,7 @@ function removeForm(){
 }
 
 function addForm(){
+    var formParent = document.getElementById("formParent");
     var form = document.createElement("form");
     form.id = "guessForm";
     var label1 = document.createElement("label");
@@ -224,7 +224,7 @@ function addForm(){
     select1.name="rooms";
     form.appendChild(select1);
     var br1 = document.createElement("br");
-    form.appendChild(br);
+    form.appendChild(br1);
     
     var label2 = document.createElement("label");
     label2.innerHTML = "Guess Suspect:";
@@ -250,7 +250,7 @@ function addForm(){
     */
     var ip1 = document.createElement("input");
     ip1.id = "guessButton";
-    ip1.type="burron";
+    ip1.type="button";
     ip1.disabled = "true";
     ip1.value = "Guess";
     ip1.addEventListener('click', checkGuess);
@@ -258,16 +258,18 @@ function addForm(){
     
     var ip2 = document.createElement("input");
     ip2.id = "historyButton";
-    ip2.type="burron";
+    ip2.type="button";
     ip2.value = "Show History";
     ip1.addEventListener('click', showHistory);
+    form.appendChild(ip2);
     
     var ip3 = document.createElement("input");
     ip3.id = "recordButton";
-    ip3.type="burron";
+    ip3.type="button";
     ip3.value = "Show Record";
     ip3.addEventListener('click', showRecord);
-    
+    form.appendChild(ip3);
+    formParent.appendChild(form);
 }
 
 function checkGuess(flag) {

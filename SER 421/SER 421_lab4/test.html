@@ -1,0 +1,20 @@
+<head>
+    <script type="text/javascript">
+        function AddAChild () {
+            var newElem = document.createElement ("div");
+            newElem.innerHTML = "sample text";
+            newElem.style.color = "red";
+
+            var container = document.getElementById ("container");
+            container.appendChild (newElem);
+            var newElem2 = document.createElement ("div");
+            newElem2.innerHTML = "sample text2";
+            newElem2.style.color = "blue";
+            container.appendChild(newElem2);
+        }
+    </script>
+</head>
+<body>
+    <button onclick='AddAChild ();'>Add a div element to the container!</button>
+    <div id="container"></div>
+</body>
