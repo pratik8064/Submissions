@@ -1,7 +1,5 @@
 # SER421 Lab 2
 Pratik Suryawanshi, 1213231238, psuryawa
-Shirish Chavan, 1211129553, sschava1
-Pushkar Ladhe, 1211222503, pladhe
 
 Lab2part1:
 Listens on default port 8080 using local_port in options

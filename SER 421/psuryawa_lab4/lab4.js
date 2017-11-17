@@ -1,5 +1,4 @@
-console.log("-----------start-------------");
-
+//console.log("-----------start-------------");
 
 var rooms = ["Winterfell", "Kings Landing", "DragonStone", "Vale", "The Wall", "Storms End", "Dorn"];
 var suspects = ["John Snow", "Ned Stark", "Daenerys", "Sam", "Arya", "NightKing", "Jaime Lanister"];
@@ -198,7 +197,7 @@ function displayPlayer() {
     element.parentNode.removeChild(element);
     pElement[0].innerHTML = getPlayerMsg(player, playerName);
     enableGuess();
-    console.log(secret);
+    //console.log(secret);
 }
 
 function getWinningTime(){
@@ -355,7 +354,7 @@ function checkGuess(flag) {
 }
 
 function hideHistory(){
-    console.log("hide history");
+    //console.log("hide history");
     var element = document.getElementById("historyList");
     if (element !== null)
         element.parentNode.removeChild(element);
@@ -366,7 +365,7 @@ function hideHistory(){
 }
 
 function showHistory() {
-    console.log("show history");
+    //console.log("show history");
     var historyButton = document.getElementById("historyButton");
     historyButton.value = "Hide History";
     historyButton.removeEventListener('click',showHistory);
@@ -374,14 +373,14 @@ function showHistory() {
     var historyList = document.createElement("p");
     historyList.id = "historyList";
     //var list = "this is new <br> how bou that? <br>";
-    console.log(historyStr);
+    //console.log(historyStr);
     historyList.innerHTML = historyStr;
     document.getElementById("historyP").appendChild(historyList);
     
 }
 
 function hideRecord(){
-    console.log("hideRecord");
+    //console.log("hideRecord");
     var recordButton = document.getElementById("recordButton");
     recordButton.value = "Show Record";
     recordButton.removeEventListener('click',hideRecord);
@@ -390,7 +389,7 @@ function hideRecord(){
     recordList.innerHTML = "";
 }
 function showRecord(){
-    console.log("show record");
+    //console.log("show record");
     var recordButton = document.getElementById("recordButton");
     recordButton.value = "Hide Record";
     recordButton.removeEventListener('click',showRecord);
@@ -441,7 +440,7 @@ function restart() {
     removeTriplet(secret);
     playerGuessList = {};
     computerGuessList = {};
-    console.log(secret);
+    //console.log(secret);
 }
 
 function enableGuess(){    
