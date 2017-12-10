@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Ajax Weather Solution</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body onload="initApp();">
+<p id="errorMessage"></p>
+
+<table id="weatherTable">
+    <tr>
+        <th>City Name</th>
+        <th>Timestamp<br>(yyyy:mm:dd:hh:mm:ss)</th>
+        <th>Temperature<br>in &deg;C</th>
+        <th>Humidity<br>in &#37;</th>
+        <th>Wind Speed<br>in miles per hour</th>
+        <th>Cloudiness<br>in &#37;</th>
+    </tr>
+</table>
+<br />
+<div>
+    Please select a third city :
+    <select id="thirdCitySelect" onchange="loadThirdCity();">
+
+    </select>
+</div>
+<br />
+<div>
+    <button onclick="refreshData()">Refresh</button>
+</div>
+<br />
+<div>
+    <span id="lineOne"></span><br>
+    <span id="lineTwo"></span><br>
+    <span id="lineThree"></span><br>
+    <span id="lineFour"></span>
+</div>
+
+<script type="text/javascript" src="lab-5-script.js"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<div>
+    <p id="error">
+    </p>
+</div>
+<div>
+    <table id="table">
+        <tr>
+            <th>
+                City Name
+            </th>
+            <th>
+                Timestamp<br> (yyyy:mm:dd:hh:mm:ss)
+            </th>
+            <th>
+                Temperature
+                <br>in C
+            </th>
+            <th>
+                Humidity
+                <br>in %
+            </th>
+            <th>
+                Wind speed
+                <br>in miles per hour
+            </th>
+            <th>
+                Cloudiness
+                <br>in %
+            </th>
+        </tr>
+        <tr id="row1New">
+        </tr>
+        <tr id="row1Old">
+        </tr>
+        <tr id="row2New">
+        </tr>
+        <tr id="row2Old">
+        </tr>
+        <tr id="row3New">
+        </tr>
+        <tr id="row3Old">
+        </tr>
+
+    </table>
+</div>
+<div>
+    <p>
+        Please select city :
+        <select ng-model="selectedCity" ng-options="x for x in names" ng-change="addCity(true)"></select>
+    </p>
+    <input id="refresh" type="button" value="Referesh" ng-click="refreshData()" />
+</div>
+<div>
+
+    <p id="avgTemp"></p>
+    <p id="avgHum"></p>
+    <p id="nicest"></p>
+    <p id="worst"></p>
+
+</div>

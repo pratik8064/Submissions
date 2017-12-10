@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.pratik.myapplication.Native"
+    tools:layout_editor_absoluteY="81dp">
+
+    <Button
+        android:id="@+id/button_weather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="53dp"
+        android:layout_marginTop="17dp"
+        android:text="Weather"
+        app:layout_constraintStart_toEndOf="@+id/button_change"
+        app:layout_constraintTop_toBottomOf="@+id/button_city10" />
+
+    <Button
+        android:id="@+id/button_change"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:text="Change"
+        app:layout_constraintBottom_toBottomOf="@+id/button_weather"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/button_weather" />
+
+    <CheckBox
+        android:id="@+id/checkbox_id_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="51dp"
+        android:layout_marginStart="78dp"
+        android:layout_marginTop="1dp"
+        android:text="Denver"
+        app:layout_constraintEnd_toStartOf="@+id/button_city1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/checkbox_id_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="51dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="17dp"
+        android:text="Tucson"
+        app:layout_constraintEnd_toStartOf="@+id/button_city1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkbox_id_1" />
+
+    <CheckBox
+        android:id="@+id/checkbox_id_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="16dp"
+        android:text="Boston"
+        app:layout_constraintStart_toStartOf="@+id/checkbox_id_4"
+        app:layout_constraintTop_toBottomOf="@+id/checkbox_id_2" />
+
+    <CheckBox
+        android:id="@+id/checkbox_id_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="47dp"
+        android:layout_marginTop="48dp"
+        android:text="Houston"
+        app:layout_constraintBottom_toBottomOf="@+id/checkbox_id_5"
+        app:layout_constraintEnd_toEndOf="@+id/checkbox_id_2"
+        app:layout_constraintStart_toStartOf="@+id/checkbox_id_2"
+        app:layout_constraintTop_toTopOf="@+id/checkbox_id_3" />
+
+    <CheckBox
+        android:id="@+id/checkbox_id_5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:text="Miami"
+        app:layout_constraintStart_toStartOf="@+id/checkbox_id_4"
+        app:layout_constraintTop_toBottomOf="@+id/button_city4" />
+
+    <CheckBox
+        android:id="@+id/checkbox_id_6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Seattle"
+        app:layout_constraintBottom_toBottomOf="@+id/button_city6"
+        app:layout_constraintStart_toStartOf="@+id/checkbox_id_5"
+        app:layout_constraintTop_toBottomOf="@+id/checkbox_id_5" />
+
+    <CheckBox
+        android:id="@+id/checkbox_id_7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tempa"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/checkbox_id_6"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/checkbox_id_8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Chicago"
+        app:layout_constraintStart_toStartOf="@+id/checkbox_id_7"
+        app:layout_constraintTop_toBottomOf="@+id/checkbox_id_7" />
+
+    <CheckBox
+        android:id="@+id/checkbox_id_9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="49dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="46dp"
+        android:text="Detroit"
+        app:layout_constraintBottom_toBottomOf="@+id/checkbox_id_10"
+        app:layout_constraintStart_toStartOf="@+id/checkbox_id_8"
+        app:layout_constraintTop_toTopOf="@+id/checkbox_id_8" />
+
+    <CheckBox
+        android:id="@+id/checkbox_id_10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="4dp"
+        android:text="Austin"
+        app:layout_constraintBottom_toTopOf="@+id/button_change"
+        app:layout_constraintEnd_toEndOf="@+id/checkbox_id_9" />
+
+    <Button
+        android:id="@+id/button_city1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="118dp"
+        android:layout_marginTop="1dp"
+        android:text="Info"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/checkbox_id_2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_city6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
+        android:layout_marginTop="48dp"
+        android:text="Info"
+        app:layout_constraintBottom_toBottomOf="@+id/button_city7"
+        app:layout_constraintStart_toStartOf="@+id/button_city5"
+        app:layout_constraintTop_toTopOf="@+id/button_city5" />
+
+    <Button
+        android:id="@+id/button_city2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="49dp"
+        android:text="Info"
+        app:layout_constraintStart_toStartOf="@+id/button_city1"
+        app:layout_constraintTop_toTopOf="@+id/button_city1" />
+
+    <Button
+        android:id="@+id/button_city3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Info"
+        app:layout_constraintStart_toStartOf="@+id/button_city2"
+        app:layout_constraintTop_toBottomOf="@+id/button_city2" />
+
+    <Button
+        android:id="@+id/button_city4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
+        android:layout_marginTop="48dp"
+        android:text="Info"
+        app:layout_constraintBottom_toBottomOf="@+id/button_city5"
+        app:layout_constraintStart_toStartOf="@+id/button_city3"
+        app:layout_constraintTop_toTopOf="@+id/button_city3" />
+
+    <Button
+        android:id="@+id/button_city5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="44dp"
+        android:text="Info"
+        app:layout_constraintBottom_toTopOf="@+id/button_city7"
+        app:layout_constraintStart_toStartOf="@+id/button_city4" />
+
+    <Button
+        android:id="@+id/button_city7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Info"
+        app:layout_constraintBottom_toTopOf="@+id/checkbox_id_8"
+        app:layout_constraintStart_toStartOf="@+id/button_city6" />
+
+    <Button
+        android:id="@+id/button_city8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="47dp"
+        android:layout_marginTop="47dp"
+        android:text="Info"
+        app:layout_constraintBottom_toBottomOf="@+id/button_city9"
+        app:layout_constraintEnd_toEndOf="@+id/button_city7"
+        app:layout_constraintStart_toStartOf="@+id/button_city7"
+        app:layout_constraintTop_toTopOf="@+id/checkbox_id_7" />
+
+    <Button
+        android:id="@+id/button_city9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="39dp"
+        android:text="Info"
+        app:layout_constraintBottom_toBottomOf="@+id/button_city10"
+        app:layout_constraintStart_toStartOf="@+id/button_city10" />
+
+    <Button
+        android:id="@+id/button_city10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="138dp"
+        android:layout_marginTop="137dp"
+        android:text="Info"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/button_weather"
+        app:layout_constraintTop_toTopOf="@+id/button_city7"
+        app:layout_constraintVertical_bias="0.0" />
+
+</android.support.constraint.ConstraintLayout>
